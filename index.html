@@ -5,33 +5,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EpiShop — E-commerce</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
 </head>
 
 <body>
 
   <header class="bg-primary text-white py-3">
-    <!-- Header con container per mantenere l'allineamento e spaziatura corretta -->
-    <div class="container d-flex justify-content-between align-items-center">
-      <h1 class="fs-3 m-0">EpiShop</h1>
-      <nav>
-        <a class="text-white text-decoration-none mx-2">Prodotti</a>
-        <a class="text-white text-decoration-none mx-2">Offerte</a>
-        <a class="text-white text-decoration-none mx-2 d-none d-lg-inline">Contatti</a>
-      </nav>
-    </div>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container">
+        <!-- a) Logo / Brand -->
+        <a class="navbar-brand fw-bold" href="#">EpiShop</a>
+
+        <!-- b) Bottone hamburger (toggler) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- c) Contenitore del menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Prodotti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Offerte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contatti</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <section class="bg-light py-5">
-    <!-- Sezione Hero -->
-    <div class="container text-center">
-      <h2 class="fs-1 fw-bold mb-3">Saldi di primavera</h2>
-      <p class="fs-5 text-muted mb-4">Scopri le offerte sui prodotti in evidenza, fino al 50% di sconto.</p>
-      <a class="d-inline-block bg-primary text-white text-decoration-none py-2 px-4 rounded">Vedi i prodotti</a>
+  <section>
+    <div id="hero" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+      <div class="carousel-inner">
+
+        <!-- Prima diapositiva (attiva) -->
+        <div class="carousel-item active">
+          <div class="text-white text-center">
+            <div class="container bg-primary py-5">
+              <h2 class="fs-1 fw-bold mb-2">Saldi di primavera</h2>
+              <p class="fs-5 m-0">Fino al 50% di sconto sui prodotti in evidenza</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seconda diapositiva -->
+        <div class="carousel-item">
+          <div class="text-white text-center">
+            <div class="container bg-success py-5">
+              <h2 class="fs-1 fw-bold mb-2">Nuova collezione</h2>
+              <p class="fs-5 m-0">Scopri gli arrivi della settimana</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terza diapositiva -->
+        <div class="carousel-item">
+          <div class="text-white text-center">
+            <div class="container bg-dark py-5">
+              <h2 class="fs-1 fw-bold mb-2">Spedizione gratis</h2>
+              <p class="fs-5 m-0">Sopra i 50 € su tutto il sito</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pulsante Precedente -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <!-- Pulsante Successivo -->
+      <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </section>
 
   <main class="container my-4">
+
+    <div class="alert alert-info
+alert-dismissible">Spedizione gratis sopra i 50 €. <button class="btn-close" data-bs-dismiss="alert"></button></div>
+
     <div class="row">
 
       <!-- Sidebar categorie: visibile solo da lg in su -->
@@ -47,48 +109,100 @@
 
       <!-- Griglia prodotti -->
       <section class="col-12 col-lg-9">
-        <h2 class="fs-3 fw-bold mb-4 text-center text-md-start">Prodotti in evidenza</h2>
-        <div class="row">
-          
-          <!-- Prodotto 1: Sneaker Run -->
+        <h2 class="fs-3 fw-bold mb-4 text-center text-md-start">Prodotti in evidenza <span class="badge bg-danger
+fs-6">-30%</span></h2>
+        <div class="row" id="griglia-prodotti">
+
+          <!--
           <article class="col-12 col-sm-6 col-xl-4 mb-3">
-            <div class="border rounded p-3 bg-white shadow-sm">
-              <div class="bg-secondary mb-2 rounded" style="height: 160px;"></div>
-              <h3 class="fs-5 fw-bold m-0">Sneaker Run</h3>
-              <p class="text-muted m-0">€ 89,00</p>
+            <div class="card h-100 shadow-sm">
+              <img src="https:/placehold.co/300x180" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Sneaker Run</h5>
+                <p class="card-text text-muted">Scarpa leggera per la corsa, suola in gomma traspirante.</p>
+                <p class="fw-bold fs-5 m-0">€ 89,00</p>
+              </div>
+              <div class="card-footer bg-white border-0">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                  data-bs-target="#prodotto-1">Dettagli</button>
+              </div>
             </div>
           </article>
 
-          <!-- Prodotto 2: T-shirt basic -->
           <article class="col-12 col-sm-6 col-xl-4 mb-3">
-            <div class="border rounded p-3 bg-white shadow-sm">
-              <div class="bg-secondary mb-2 rounded" style="height: 160px;"></div>
-              <h3 class="fs-5 fw-bold m-0">T-shirt basic</h3>
-              <p class="text-muted m-0">€ 19,00</p>
+            <div class="card h-100 shadow-sm">
+              <img src="https:/placehold.co/300x180" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">T-shirt basic</h5>
+                <p class="card-text text-muted">Cotone biologico, taglio regolare, disponibile in 5 colori.</p>
+                <p class="fw-bold fs-5 m-0">€ 19,00</p>
+              </div>
+              <div class="card-footer bg-white border-0">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                  data-bs-target="#prodotto-2">Dettagli</button>
+              </div>
             </div>
           </article>
 
-          <!-- Prodotto 3: Borsa city -->
           <article class="col-12 col-sm-6 col-xl-4 mb-3">
-            <div class="border rounded p-3 bg-white shadow-sm">
-              <div class="bg-secondary mb-2 rounded" style="height: 160px;"></div>
-              <h3 class="fs-5 fw-bold m-0">Borsa city</h3>
-              <p class="text-muted m-0">€ 49,00</p>
+            <div class="card h-100 shadow-sm">
+              <img src="https:/placehold.co/300x180" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Borsa city</h5>
+                <p class="card-text text-muted">Tessuto resistente, tasca interna, cinghia regolabile.</p>
+                <p class="fw-bold fs-5 m-0">€ 49,00</p>
+              </div>
+              <div class="card-footer bg-white border-0">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                  data-bs-target="#prodotto-3">Dettagli</button>
+              </div>
             </div>
           </article>
-
+-->
         </div>
       </section>
 
     </div>
   </main>
 
+  <div class="modal fade" id="modalProdotto" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitolo">titolo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+          <img id="modalImmagine" src="" class="img-fluid mb-3" alt="Immagine prodotto">
+          <p id="modalDescrizione">Descrizione dettagliata del prodotto.</p>
+          <p id="modalPrezzo" class="fw-bold fs-4 m-0">99,99 €</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+          <button type="button" class="btn btn-success">Aggiungi al carrello</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
   <footer class="bg-dark text-white py-4 mt-5">
     <div class="container text-center">
-      <p class="m-0">2026 EpiShop - tutti i diritti riservati</p>
+      <p class="m-0">©2026 EpiShop - tutti i diritti riservati</p>
     </div>
   </footer>
 
+  <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
