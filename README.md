@@ -1,4 +1,7 @@
 # s6-l1
+
+## Day 1
+
 ```
 <body>
 
@@ -158,3 +161,7 @@
 </body>
 
 </html>
+
+## Day 3
+
+Bootstrap 5.3 ha il supporto nativo al tema scuro: basta impostare l’attributo data-bs-theme="dark" sull’elemento <html> e tutti i componenti si adattano da soli. 

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EpiShop — E-commerce</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets\css\style.css">
 </head>
 
 <body>
@@ -35,6 +36,8 @@
               <a class="nav-link" href="#">Contatti</a>
             </li>
           </ul>
+          <button id="toggle-tema" type="button" class="btn btn-outline-light ms-md-2 mt-2 mt-md-0">Tema
+            scuro.</button>
         </div>
       </div>
     </nav>
@@ -98,7 +101,7 @@ alert-dismissible">Spedizione gratis sopra i 50 €. <button class="btn-close" d
 
       <!-- Sidebar categorie: visibile solo da lg in su -->
       <aside class="col-lg-3 d-none d-lg-block">
-        <div class="bg-light p-3 rounded border">
+        <div class="bg-body p-3 rounded border">
           <h3 class="fs-5 fw-bold mb-3">Categorie</h3>
           <p class="m-0 py-1">Scarpe</p>
           <p class="m-0 py-1">T-shirt</p>
@@ -112,53 +115,6 @@ alert-dismissible">Spedizione gratis sopra i 50 €. <button class="btn-close" d
         <h2 class="fs-3 fw-bold mb-4 text-center text-md-start">Prodotti in evidenza <span class="badge bg-danger
 fs-6">-30%</span></h2>
         <div class="row" id="griglia-prodotti">
-
-          <!--
-          <article class="col-12 col-sm-6 col-xl-4 mb-3">
-            <div class="card h-100 shadow-sm">
-              <img src="https:/placehold.co/300x180" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">Sneaker Run</h5>
-                <p class="card-text text-muted">Scarpa leggera per la corsa, suola in gomma traspirante.</p>
-                <p class="fw-bold fs-5 m-0">€ 89,00</p>
-              </div>
-              <div class="card-footer bg-white border-0">
-                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                  data-bs-target="#prodotto-1">Dettagli</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="col-12 col-sm-6 col-xl-4 mb-3">
-            <div class="card h-100 shadow-sm">
-              <img src="https:/placehold.co/300x180" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">T-shirt basic</h5>
-                <p class="card-text text-muted">Cotone biologico, taglio regolare, disponibile in 5 colori.</p>
-                <p class="fw-bold fs-5 m-0">€ 19,00</p>
-              </div>
-              <div class="card-footer bg-white border-0">
-                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                  data-bs-target="#prodotto-2">Dettagli</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="col-12 col-sm-6 col-xl-4 mb-3">
-            <div class="card h-100 shadow-sm">
-              <img src="https:/placehold.co/300x180" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">Borsa city</h5>
-                <p class="card-text text-muted">Tessuto resistente, tasca interna, cinghia regolabile.</p>
-                <p class="fw-bold fs-5 m-0">€ 49,00</p>
-              </div>
-              <div class="card-footer bg-white border-0">
-                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                  data-bs-target="#prodotto-3">Dettagli</button>
-              </div>
-            </div>
-          </article>
--->
         </div>
       </section>
 
