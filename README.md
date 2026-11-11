@@ -161,7 +161,47 @@
 </body>
 
 </html>
+```
 
 ## Day 3
 
 Bootstrap 5.3 ha il supporto nativo al tema scuro: basta impostare l’attributo data-bs-theme="dark" sull’elemento <html> e tutti i componenti si adattano da soli. 
+
+bg-body è una classe di Bootstrap 5.3 che applica a un elemento lo stesso colore di sfondo del <body>, e che si adatta al tema attivo.
+
+Come funziona
+
+Bootstrap 5.3 definisce delle variabili CSS per i colori del tema. bg-body usa questa:
+
+```
+css
+.bg-body {
+  background-color: var(--bs-body-bg) !important;
+}
+
+```
+
+--bs-body-bg cambia valore a seconda di data-bs-theme:
+
+tema chiaro: bianco (#fff)
+tema scuro: grigio molto scuro (
+#212529)
+
+Quindi se scrivi <div class="bg-body">, quel div è bianco nel tema chiaro e scuro in quello scuro, senza che tu debba fare altro.
+
+Perché ti avevo consigliato di usarla
+
+Classi come bg-white e bg-light hanno colori fissi: restano bianche/chiare anche col tema scuro, e il risultato è una sidebar chiara su una pagina scura. Le classi “body” invece seguono il tema.
+
+Le varianti utili
+
+Classe	Cosa fa
+bg-body	Sfondo uguale a quello della pagina
+bg-body-secondary	Un po’ più marcato (grigio leggero / grigio scuro più chiaro)
+bg-body-tertiary	Sfumatura sottile, simile a bg-light ma adattiva
+
+Per questo nella sidebar ti ho suggerito di passare da bg-light a bg-body-tertiary: l’aspetto nel tema chiaro è quasi identico, ma nel tema scuro diventa scuro.
+
+Corrispondente per il testo
+
+Se cambi lo sfondo, controlla anche il testo: text-body usa il colore del testo del tema (--bs-body-color), mentre text-dark resta sempre nero e sullo sfondo scuro sarebbe illeggibile.

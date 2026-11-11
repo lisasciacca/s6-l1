@@ -37,7 +37,7 @@ prodotti.forEach(prodotto => {
 
   // Creazione <div class="card h-100 shadow-sm">
   const card = document.createElement('div');
-  card.className = 'card h-100 shadow-sm';
+  card.className = 'card h-100 shadow-sm bg-body-tertiary';
 
   // Creazione <img src="..." class="card-img-top">
   const img = document.createElement('img');
@@ -68,9 +68,9 @@ prodotti.forEach(prodotto => {
   cardBody.appendChild(pText);
   cardBody.appendChild(pPrice);
 
-  // Creazione <div class="card-footer bg-body border-0">
+  // Creazione <div class="card-footer bg-body-tertiary border-0">
   const cardFooter = document.createElement('div');
-  cardFooter.className = 'card-footer bg-body border-0';
+  cardFooter.className = 'card-footer bg-body-tertiary border-0';
 
   // Creazione del bottone "Dettagli"
   const button = document.createElement('button');
