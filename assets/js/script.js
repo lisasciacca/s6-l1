@@ -118,7 +118,9 @@ const html = document.documentElement;
 
 
 btnTema.addEventListener('click', () => {
-  const scuro = html.getAttribute('data-bs-theme') === 'dark'; //Applica il tema
-  html.setAttribute('data-bs-theme', scuro ? 'light' : 'dark'); //Cambia la scritta nel bottone
-  btnTema.textContent = scuro ? 'Tema scuro' : 'Tema chiaro';
+  const scuro = html.getAttribute('data-bs-theme') === 'dark'; //Prende il tema se è scuro
+  html.setAttribute('data-bs-theme', scuro ? 'light' : 'dark'); //Applica il tema al click
+  // condizione ? valore_se_vero : valore_se_falso
+
+  btnTema.textContent = scuro ? 'Tema scuro' : 'Tema chiaro'; //Cambia la scritta nel bottone - è invertito, se il tema è scuro spunta chiaro, se chiaro spunta scuro
 });
