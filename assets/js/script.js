@@ -1,126 +1,110 @@
-
-// 1. Array con i dati dei prodotti
+// 1. Dati dei prodotti
 const prodotti = [
-  {
-    id: 1,
-    titolo: "Sneaker Run",
-    prezzo: "€ 89,00",
-    descrizione: "Scarpe da running comode e leggere, ideali per lo sport e il tempo libero.",
-    immagine: "https://placehold.co/300x180",
-    immagineModal: "https://placehold.co/600x300"
-  },
-  {
-    id: 2,
-    titolo: "T-shirt basic",
-    prezzo: "€ 19,00",
-    descrizione: "Maglietta in cotone 100% basic, comoda per tutti i giorni.",
-    immagine: "https://placehold.co/300x180",
-    immagineModal: "https://placehold.co/600x300"
-  },
-  {
-    id: 3,
-    titolo: "Borsa city",
-    prezzo: "€ 49,00",
-    descrizione: "Borsa spaziosa ed elegante per la città e il lavoro.",
-    immagine: "https://placehold.co/300x180",
-    immagineModal: "https://placehold.co/600x300"
-  }
+  { id: 1, categoria: "Scarpe", titolo: "Sneaker Run", prezzo: "€ 89", descrizione: "Scarpa leggera per la corsa, suola in gomma traspirante." },
+  { id: 2, categoria: "Abbigliamento", titolo: "T-shirt basic", prezzo: "€ 19", descrizione: "Cotone biologico, taglio regolare, disponibile in 5 colori." },
+  { id: 3, categoria: "Accessori", titolo: "Borsa city", prezzo: "€ 49", descrizione: "Tessuto resistente, tasca interna, cinghia regolabile." },
+  { id: 4, categoria: "Scarpe", titolo: "Sandali estate", prezzo: "€ 39", descrizione: "Plantare anatomico, pelle vegana, perfetti per l'estate." },
+  { id: 5, categoria: "Abbigliamento", titolo: "Felpa con cappuccio", prezzo: "€ 59", descrizione: "Tessuto morbido, tasca a marsupio, polsini elasticizzati." },
+  { id: 6, categoria: "Accessori", titolo: "Cappello sport", prezzo: "€ 14", descrizione: "Visiera regolabile, traspirante, ideale per gli allenamenti." }
 ];
+
+// Colore di ogni categoria
+const coloriCategorie = {
+  Scarpe: 'var(--epi-blue)',
+  Abbigliamento: 'var(--epi-red)',
+  Accessori: 'var(--epi-yellow)'
+};
 
 const grigliaProdotti = document.getElementById('griglia-prodotti');
 
-// 2. Generazione dinamica delle card tramite metodi del DOM
-prodotti.forEach(prodotto => {
-  // Creazione <article class="col-12 col-sm-6 col-xl-4 mb-3">
-  const colonna = document.createElement('article');
-  colonna.className = 'col-12 col-sm-6 col-xl-4 mb-3';
+// 2. Generazione delle card (solo quelle della categoria scelta)
+function mostraProdotti(categoria) {
+  grigliaProdotti.replaceChildren();
 
-  // Creazione <div class="card h-100 shadow-sm">
-  const card = document.createElement('div');
-  card.className = 'card h-100 shadow-sm bg-body-tertiary';
+  prodotti
+    .filter(p => categoria === 'Tutti' || p.categoria === categoria)
+    .forEach(prodotto => {
+      const colonna = document.createElement('article');
+      colonna.className = 'col-12 col-sm-6 col-xl-4';
 
-  // Creazione <img src="..." class="card-img-top">
-  const img = document.createElement('img');
-  img.src = prodotto.immagine;
-  img.className = 'card-img-top';
-  img.alt = prodotto.titolo;
+      // Tutta la card è il pulsante che apre il modale
+      const card = document.createElement('div');
+      card.className = 'card h-100 card-prodotto';
+      card.style.setProperty('--accent', coloriCategorie[prodotto.categoria]);
+      card.setAttribute('role', 'button');
+      card.setAttribute('data-bs-toggle', 'modal');
+      card.setAttribute('data-bs-target', '#modalProdotto');
+      card.setAttribute('data-bs-id', prodotto.id);
 
-  // Creazione <div class="card-body">
-  const cardBody = document.createElement('div');
-  cardBody.className = 'card-body';
+      const img = document.createElement('img');
+      img.src = 'https://placehold.co/300x180';
+      img.className = 'card-img-top';
+      img.alt = prodotto.titolo;
 
-  // Creazione <h5 class="card-title">
-  const h5 = document.createElement('h5');
-  h5.className = 'card-title';
-  h5.textContent = prodotto.titolo;
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
 
-  // Creazione <p class="card-text text-muted">
-  const pText = document.createElement('p');
-  pText.className = 'card-text text-muted';
+      const h5 = document.createElement('h5');
+      h5.className = 'card-title';
+      h5.textContent = prodotto.titolo;
 
-  // Creazione <p class="fw-bold fs-5 m-0">
-  const pPrice = document.createElement('p');
-  pPrice.className = 'fw-bold fs-5 m-0';
-  pPrice.textContent = prodotto.prezzo;
+      const pText = document.createElement('p');
+      pText.className = 'card-text text-muted';
+      pText.textContent = prodotto.descrizione;
 
-  // Assemblaggio del card-body
-  cardBody.appendChild(h5);
-  cardBody.appendChild(pText);
-  cardBody.appendChild(pPrice);
+      const pPrice = document.createElement('p');
+      pPrice.className = 'fw-bold fs-5 m-0';
+      pPrice.textContent = prodotto.prezzo;
 
-  // Creazione <div class="card-footer bg-body-tertiary border-0">
-  const cardFooter = document.createElement('div');
-  cardFooter.className = 'card-footer bg-body-tertiary border-0';
+      cardBody.append(h5, pText, pPrice);
+      card.append(img, cardBody);
+      colonna.appendChild(card);
+      grigliaProdotti.appendChild(colonna);
+    });
+}
 
-  // Creazione del bottone "Dettagli"
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'btn btn-primary w-100';
-  button.setAttribute('data-bs-toggle', 'modal');
-  button.setAttribute('data-bs-target', '#modalProdotto');
-  button.setAttribute('data-bs-id', prodotto.id);
-  button.textContent = 'Dettagli';
+mostraProdotti('Tutti');
 
-  // Assemblaggio del footer
-  cardFooter.appendChild(button);
+// 3. Filtri: bottoni sopra la griglia e voci della sidebar fanno la stessa cosa
+const bottoniFiltro = document.querySelectorAll('#filtri button');
+const vociCategorie = document.querySelectorAll('.categoria-link');
+const elementiFiltro = [...bottoniFiltro, ...vociCategorie];
 
-  // Assemblaggio finale della card e della colonna
-  card.appendChild(img);
-  card.appendChild(cardBody);
-  card.appendChild(cardFooter);
-  colonna.appendChild(card);
+function impostaFiltro(categoria) {
+  // "active" resta solo sugli elementi della categoria scelta
+  elementiFiltro.forEach(el => {
+    el.classList.toggle('active', el.dataset.categoria === categoria);
+  });
+  mostraProdotti(categoria);
+}
 
-  // Inserimento nel contenitore principale della pagina
-  grigliaProdotti.appendChild(colonna);
+elementiFiltro.forEach(el => {
+  el.addEventListener('click', () => impostaFiltro(el.dataset.categoria)); //el.dataset.categoria legge l’attributo HTML data-categoria del bottone, per esempio "Scarpe". Quel valore viene passato a mostraProdotti, che svuota la griglia e ridisegna solo le card di quella categoria (o tutte, se il valore è "Tutti").
 });
 
-// 3. Gestione dinamica del Modale basata sull'ID
+document.getElementById('categorie-tutti').addEventListener('click', () => impostaFiltro('Tutti'));
+
+// 4. Modale riempito in base all'id della card cliccata
 const modalProdotto = document.getElementById('modalProdotto');
 modalProdotto.addEventListener('show.bs.modal', function (event) {
-  const button = event.relatedTarget;
-  const idProdotto = button.getAttribute('data-bs-id');
+  const idProdotto = event.relatedTarget.getAttribute('data-bs-id');
+  const prodotto = prodotti.find(p => p.id == idProdotto);
 
-  // Cerca il prodotto corrispondente nell'array usando l'id
-  const prodottoTrovato = prodotti.find(p => p.id == idProdotto);
-
-  // Riempi la modale con i dati del prodotto trovato
-  if (prodottoTrovato) {
-    modalProdotto.querySelector('#modalTitolo').textContent = prodottoTrovato.titolo;
-    modalProdotto.querySelector('#modalPrezzo').textContent = prodottoTrovato.prezzo;
-    modalProdotto.querySelector('#modalDescrizione').textContent = prodottoTrovato.descrizione;
-    modalProdotto.querySelector('#modalImmagine').src = prodottoTrovato.immagineModal;
+  if (prodotto) {
+    modalProdotto.querySelector('#modalTitolo').textContent = prodotto.titolo;
+    modalProdotto.querySelector('#modalPrezzo').textContent = prodotto.prezzo;
+    modalProdotto.querySelector('#modalDescrizione').textContent = prodotto.descrizione;
+    modalProdotto.querySelector('#modalImmagine').src = 'https://placehold.co/600x300';
+    modalProdotto.querySelector('.modal-content').style.setProperty('--accent', coloriCategorie[prodotto.categoria]);
   }
 });
 
+// 5. Tema chiaro / scuro
 const btnTema = document.getElementById('toggle-tema');
-// document.documentElement è l’elemento <html>, la radice della pagina. Lo salvo in html perché è lì che Bootstrap legge l’attributo del tema.
 const html = document.documentElement;
 
-
 btnTema.addEventListener('click', () => {
-  const scuro = html.getAttribute('data-bs-theme') === 'dark'; //Prende il tema se è scuro
-  html.setAttribute('data-bs-theme', scuro ? 'light' : 'dark'); //Applica il tema al click
-  // condizione ? valore_se_vero : valore_se_falso
-
-  btnTema.textContent = scuro ? 'Tema scuro' : 'Tema chiaro'; //Cambia la scritta nel bottone - è invertito, se il tema è scuro spunta chiaro, se chiaro spunta scuro
+  const scuro = html.getAttribute('data-bs-theme') === 'dark';
+  html.setAttribute('data-bs-theme', scuro ? 'light' : 'dark');
+  btnTema.textContent = scuro ? 'Tema scuro' : 'Tema chiaro';
 });

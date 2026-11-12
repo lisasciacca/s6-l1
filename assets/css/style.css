@@ -1,0 +1,115 @@
+:root {
+    --epi-green: #1f7d52;
+    --epi-green-dark: #17613f;
+    --epi-blue: #2a4fa8;
+    --epi-red: #d62839;
+    --epi-yellow: #f0b400;
+}
+
+/* Colori di pagina e delle card nei due temi */
+/* data-bs-theme è un attributo HTML introdotto a partire da Bootstrap 5.3 che permette di gestire in modo nativo e semplice i temi grafici, in particolare la modalità chiara (light) e scura (dark) */
+[data-bs-theme="light"] {
+    --bs-body-bg: #fafafa;
+    --card-bg: #fff;
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg: #1c1c1c;
+    --card-bg: #2a2a2a;
+}
+
+.bg-epi {
+    background-color: var(--epi-green);
+}
+
+.bg-epi-dark {
+    background-color: var(--epi-green-dark);
+}
+
+/* Bottone verde pieno */
+.btn-epi {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--epi-green);
+    --bs-btn-border-color: var(--epi-green);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--epi-green-dark);
+    --bs-btn-hover-border-color: var(--epi-green-dark);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--epi-green-dark);
+    --bs-btn-active-border-color: var(--epi-green-dark);
+}
+
+/* Bottone verde con bordo (i filtri); con .active diventa pieno */
+.btn-outline-epi {
+    --bs-btn-color: var(--epi-green);
+    --bs-btn-border-color: var(--epi-green);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--epi-green);
+    --bs-btn-hover-border-color: var(--epi-green);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--epi-green);
+    --bs-btn-active-border-color: var(--epi-green);
+}
+
+.box-categorie,
+.card-prodotto {
+    background-color: var(--card-bg);
+}
+
+.box-categorie {
+    position: sticky;
+    top: 6rem;
+}
+
+/* Card prodotto: bordo e titolo con il colore --accent (impostato da JS) */
+.card-prodotto {
+    border-top: 4px solid var(--accent);
+    cursor: pointer;
+    box-shadow: var(--bs-box-shadow-sm);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-prodotto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0.75rem 1.5rem color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+/* Chi ha disattivato le animazioni nel sistema non vede il movimento */
+@media (prefers-reduced-motion: reduce) {
+    .card-prodotto {
+        transition: none;
+    }
+
+    .card-prodotto:hover {
+        transform: none;
+    }
+}
+
+.card-prodotto .card-title {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+#modalProdotto .modal-content {
+    border-top: 4px solid var(--accent, var(--epi-green));
+}
+
+/* Voci della sidebar: bottoni che sembrano testo */
+.categoria-link {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    text-align: left;
+}
+
+.categoria-link:hover,
+.categoria-link.active {
+    color: var(--epi-green);
+}
+
+.categoria-link.active {
+    font-weight: 600;
+}

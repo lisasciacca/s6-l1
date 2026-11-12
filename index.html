@@ -1,121 +1,102 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-bs-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EpiShop — E-commerce</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets\css\style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-  <header class="bg-primary text-white py-3">
-    <nav class="navbar navbar-expand-md navbar-dark">
+  <header class="bg-epi text-white sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark py-3">
       <div class="container">
-        <!-- a) Logo / Brand -->
         <a class="navbar-brand fw-bold" href="#">EpiShop</a>
 
-        <!-- b) Bottone hamburger (toggler) -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- c) Contenitore del menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Prodotti</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Offerte</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contatti</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Prodotti</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Offerte</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contatti</a></li>
           </ul>
-          <button id="toggle-tema" type="button" class="btn btn-outline-light ms-md-2 mt-2 mt-md-0">Tema
-            scuro.</button>
+          <button id="toggle-tema" type="button" class="btn btn-outline-light ms-md-2 mt-2 mt-md-0">Tema scuro</button>
         </div>
       </div>
     </nav>
   </header>
 
   <section>
-    <div id="hero" class="carousel slide shadow overflow-hidden" data-bs-ride="carousel" data-bs-interval="3500">
+    <div id="hero" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
       <div class="carousel-inner">
 
-        <!-- Prima diapositiva (attiva) -->
-        <div class="carousel-item active">
-          <div class="text-white text-center">
-            <div class="container-fluid bg-primary py-5">
-              <h2 class="fs-1 fw-bold mb-2">Saldi di primavera</h2>
-              <p class="fs-5 m-0">Fino al 50% di sconto sui prodotti in evidenza</p>
-            </div>
+        <div class="carousel-item active bg-epi">
+          <div class="text-white text-center py-5 px-5">
+            <h2 class="fs-1 fw-bold mb-2">Saldi di primavera</h2>
+            <p class="fs-5 m-0">Fino al 50% di sconto sui prodotti in evidenza</p>
           </div>
         </div>
 
-        <!-- Seconda diapositiva -->
-        <div class="carousel-item">
-          <div class="text-white text-center">
-            <div class="container-fluid bg-success py-5">
-              <h2 class="fs-1 fw-bold mb-2">Nuova collezione</h2>
-              <p class="fs-5 m-0">Scopri gli arrivi della settimana</p>
-            </div>
+        <div class="carousel-item bg-epi-dark">
+          <div class="text-white text-center py-5 px-5">
+            <h2 class="fs-1 fw-bold mb-2">Nuova collezione</h2>
+            <p class="fs-5 m-0">Scopri gli arrivi della settimana</p>
           </div>
         </div>
 
-        <!-- Terza diapositiva -->
-        <div class="carousel-item">
-          <div class="text-white text-center">
-            <div class="container-fluid bg-dark py-5">
-              <h2 class="fs-1 fw-bold mb-2">Spedizione gratis</h2>
-              <p class="fs-5 m-0">Sopra i 50 € su tutto il sito</p>
-            </div>
+        <div class="carousel-item bg-epi">
+          <div class="text-white text-center py-5 px-5">
+            <h2 class="fs-1 fw-bold mb-2">Spedizione gratis</h2>
+            <p class="fs-5 m-0">Sopra i 50 € su tutto il sito</p>
           </div>
         </div>
       </div>
 
-      <!-- Pulsante Precedente -->
       <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="visually-hidden">Precedente</span>
       </button>
-
-      <!-- Pulsante Successivo -->
       <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="visually-hidden">Successivo</span>
       </button>
     </div>
   </section>
 
-  <main class="container my-4">
-
-    <div class="alert alert-info
-alert-dismissible">Spedizione gratis sopra i 50 €. <button class="btn-close" data-bs-dismiss="alert"></button></div>
-
+  <main class="container my-5 flex-grow-1">
     <div class="row">
 
       <!-- Sidebar categorie: visibile solo da lg in su -->
       <aside class="col-lg-3 d-none d-lg-block">
-        <div class="bg-body-secondary p-3 rounded border">
-          <h3 class="fs-5 fw-bold mb-3">Categorie</h3>
-          <p class="m-0 py-1">Scarpe</p>
-          <p class="m-0 py-1">T-shirt</p>
-          <p class="m-0 py-1">Borse</p>
-          <p class="m-0 py-1">Accessori</p>
+        <div class="box-categorie p-3 rounded border">
+          <h3 class="fs-5 fw-bold mb-3">
+            <button type="button" id="categorie-tutti" class="categoria-link fw-bold">Categorie</button>
+          </h3>
+          <button type="button" class="categoria-link" data-categoria="Scarpe">Scarpe</button>
+          <button type="button" class="categoria-link" data-categoria="Abbigliamento">Abbigliamento</button>
+          <button type="button" class="categoria-link" data-categoria="Accessori">Accessori</button>
         </div>
       </aside>
 
-      <!-- Griglia prodotti -->
       <section class="col-12 col-lg-9">
-        <h2 class="fs-3 fw-bold mb-4 text-center text-md-start">Prodotti in evidenza <span class="badge bg-danger
-fs-6">-30%</span></h2>
-        <div class="row" id="griglia-prodotti">
+        <h2 class="fs-3 fw-bold mb-3 text-center text-md-start">Prodotti in evidenza</h2>
+
+        <!-- Filtri -->
+        <div id="filtri" class="d-flex flex-wrap gap-2 mb-4">
+          <button type="button" class="btn btn-outline-epi active" data-categoria="Tutti">Tutti</button>
+          <button type="button" class="btn btn-outline-epi" data-categoria="Scarpe">Scarpe</button>
+          <button type="button" class="btn btn-outline-epi" data-categoria="Abbigliamento">Abbigliamento</button>
+          <button type="button" class="btn btn-outline-epi" data-categoria="Accessori">Accessori</button>
         </div>
+
+        <div class="row g-4" id="griglia-prodotti"></div>
       </section>
 
     </div>
@@ -124,41 +105,31 @@ fs-6">-30%</span></h2>
   <div class="modal fade" id="modalProdotto" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
-
-        <!-- Header -->
         <div class="modal-header">
           <h5 class="modal-title" id="modalTitolo">titolo</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
         </div>
-
-        <!-- Body -->
         <div class="modal-body">
           <img id="modalImmagine" src="" class="img-fluid mb-3" alt="Immagine prodotto">
           <p id="modalDescrizione">Descrizione dettagliata del prodotto.</p>
           <p id="modalPrezzo" class="fw-bold fs-4 m-0">99,99 €</p>
         </div>
-
-        <!-- Footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-          <button type="button" class="btn btn-success">Aggiungi al carrello</button>
+          <button type="button" class="btn btn-epi">Aggiungi al carrello</button>
         </div>
-
       </div>
     </div>
   </div>
-  </div>
-  </div>
 
-
-  <footer class="bg-dark text-white py-4 mt-5">
+  <footer class="bg-dark text-white py-3 sticky-bottom">
     <div class="container text-center">
-      <p class="m-0">©2026 EpiShop - tutti i diritti riservati</p>
+      <p class="m-0">© 2026 EpiShop — tutti i diritti riservati</p>
     </div>
   </footer>
 
-  <script src="assets/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 
 </html>
